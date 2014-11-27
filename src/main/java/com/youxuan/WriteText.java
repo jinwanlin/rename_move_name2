@@ -5,38 +5,51 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * 写入文本文件
+ * 
+ * @author jinwanlin
+ *
+ */
 public class WriteText {
 
 	
 	public static void main(String[] args) throws IOException {
-		open();
-		writeToTxt("1114");
-		writeToTxt("2223");
-		close();
+		WriteText w = new WriteText("");
+		w.writeLine("1114");
+		w.writeLine("2223");
+		w.close();
 	}
 	
-	public static FileWriter fw = null;
-	public static BufferedWriter writer = null;
+	public FileWriter fw = null;
+	public BufferedWriter writer = null;
 
-	public static void open() throws IOException {
-		File file = new File("/Users/jinwanlin/Desktop/aa.txt");
+	public WriteText(String abstractFilePath) throws IOException {
+		File file = new File(abstractFilePath);
 
 		fw = new FileWriter(file);
 		writer = new BufferedWriter(fw);
 	}
+	
 
-	public static void writeToTxt(String str) {
+	public void writeText(String str) {
+		try {
+			writer.write(str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public void writeLine(String str) {
 		try {
 			writer.write(str);
 			writer.newLine();// 换行
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	public static void close() throws IOException {
+	public void close() throws IOException {
 		writer.flush();
 		writer.close();
 		fw.close();
