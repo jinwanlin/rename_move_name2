@@ -1,20 +1,17 @@
-package com.youxuan;
+package success;
 
 import java.io.File;
 import java.io.IOException;
 
 /**
- * 替换文件名中的某些字符串
+ * 修改电影文件名
  * 
  * @author jinwanlin
  *
  */
 public class Rename {
 	public static void main(String[] args) throws IOException {
-		String macDir = "/Users/jinwanlin/Movies";
-		String winDir = "D:\\Download\\电影电视";
-		
-		java.io.File file = new java.io.File(macDir);
+		java.io.File file = new java.io.File("/Users/jinwanlin/s_");
 		String dirPath = file.getAbsolutePath();// 目录路径
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();// 获取此目录下的文件列表
@@ -28,11 +25,6 @@ public class Rename {
 								 "【6v电影www.6vdy.com】",
 								 "【6v电影www.dy131.com】",
 								 "【更多电视剧请去www.dy131.com】",
-								 "迅雷下载www.xunbo.cc]",
-								 "DVD版",
-								 ".DVD",
-								 "Movies\\",
-								 "迅播影院www.XunBo.Cc]",
 								 "www.kan66.com]",
 								 "www.dygod.com加长收藏版",
 								 ".720p.国粤双语.",
@@ -63,7 +55,7 @@ public class Rename {
 					toFileName = toFileName.replace(name[i], "");
 				}
 				
-				toFileName = dirPath + File.separator + toFileName;
+				toFileName = dirPath + "\\" + toFileName;
 				File toFile = new File(toFileName);
 				if (fileFrom.exists() && !toFile.exists()) {
 					System.out.println(toFileName);
@@ -74,6 +66,4 @@ public class Rename {
 
 		}
 	}
-	
-
 }
